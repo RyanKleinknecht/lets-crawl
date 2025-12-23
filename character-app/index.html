@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lets Crawl</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#111111">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+<!-- SPLASH SCREEN -->
+<div id="splashScreen" class="screen centered active" onclick="goToLauncher()">
+  <div class="center">
+    <div class="splash-title">LETS CRAWL</div>
+    <div class="splash-sub">Click anywhere to continue</div>
+  </div>
+</div>
+
+<!-- LAUNCHER -->
+<div id="launcherScreen" class="screen centered">
+  <div class="center">
+    <div class="launcher-title">Launcher</div>
+    <div class="launcher-buttons">
+      <button onclick="launchPlayerForm()">▶ Player Form</button>
+      <button disabled>🛠 DM Tools (Coming Soon)</button>
+      <button disabled>📚 Campaigns (Coming Soon)</button>
+    </div>
+  </div>
+</div>
+
+<!-- PLAYER FORM -->
+<div id="appScreen" class="screen">
+
+  <div class="app-title">
+    Lets Crawl
+    <div class="divider"></div>
+  </div>
+
+  <!-- FILE CONTROLS -->
+  <section class="collapsible open">
+    <h2 onclick="toggleSection(this)">
+      💾 Character Files <span class="chevron">▾</span>
+    </h2>
+    <div class="content">
+      <button onclick="saveCharacter()">Save Character</button>
+      <button onclick="loadCharacter()">Load Character</button>
+      <button onclick="printCharacter()">Print Character</button>
+    </div>
+  </section>
+
+  <!-- CHARACTER INFO -->
+  <section id="characterInfo" class="collapsible open">
+    <h2 onclick="toggleSection(this)">
+      🧙 Character Information <span class="chevron">▾</span>
+    </h2>
+    <div class="content">
+      <div class="row"><span>Name:</span><input></div>
+      <div class="row"><span>Race:</span><input></div>
+      <div class="row"><span>Classes:</span><input></div>
+      <div class="row"><span>Profession (Pre-Crawl):</span><input></div>
+      <div class="row"><span>Level:</span><input></div>
+      <div class="row"><span>Templates:</span><input></div>
+      <div class="row"><span>Group / Party:</span><input></div>
+    </div>
+  </section>
+
+  <!-- ATTACKS -->
+  <section class="collapsible open">
+    <h2 onclick="toggleSection(this)">⚔️ Attack Abilities <span class="chevron">▾</span></h2>
+    <div class="content">
+      <div id="attacks"></div>
+      <button onclick="addAttack()">+ Add Attack</button>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="collapsible open">
+    <h2 onclick="toggleSection(this)">🧩 Skills <span class="chevron">▾</span></h2>
+    <div class="content">
+      <div id="skills"></div>
+      <button onclick="addSkill()">+ Add Skill</button>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section class="collapsible open">
+    <h2 onclick="toggleSection(this)">🏆 Achievements <span class="chevron">▾</span></h2>
+    <div class="content">
+      <div id="achievements"></div>
+      <button onclick="addAchievement()">+ Add Achievement</button>
+    </div>
+  </section>
+
+  <!-- INVENTORY -->
+  <section class="collapsible open">
+    <h2 onclick="toggleSection(this)">🎒 Inventory & Magic Items <span class="chevron">▾</span></h2>
+    <div class="content">
+      <div id="inventory"></div>
+      <button onclick="addItem()">+ Add Item</button>
+    </div>
+  </section>
+
+  <!-- PLAYER NOTES -->
+  <section class="collapsible open">
+    <h2 onclick="toggleSection(this)">📝 Player Notes <span class="chevron">▾</span></h2>
+    <div class="content">
+      <div id="playerNotes"></div>
+      <button onclick="addPlayerNote()">+ Add Player Note</button>
+    </div>
+  </section>
+
+  <!-- GM NOTES -->
+  <section class="collapsible open">
+    <h2 onclick="toggleSection(this)">📓 GM Notes <span class="chevron">▾</span></h2>
+    <div class="content">
+      <div id="gmNotes"></div>
+      <button onclick="addGMNote()">+ Add GM Note</button>
+    </div>
+  </section>
+
+</div>
+
+<script src="app.js"></script>
+
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js");
+  }
+</script>
+
+</body>
+</html>
