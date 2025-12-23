@@ -1,0 +1,291 @@
+/* ======================================================
+   BASE / RESET
+   ====================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #111;
+  color: #eee;
+}
+
+/* ======================================================
+   SCREEN SYSTEM (Splash / Launcher / App)
+   ====================================================== */
+
+.screen {
+  display: none;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.screen.active {
+  display: block;
+}
+
+/* Centered screens (Splash & Launcher) */
+.screen.centered.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center {
+  text-align: center;
+}
+
+/* ======================================================
+   SPLASH SCREEN
+   ====================================================== */
+
+.splash-title {
+  font-size: 72px;
+  font-weight: bold;
+  color: #f5c16c;
+  letter-spacing: 6px;
+  animation: glowIn 1.6s ease-out forwards;
+}
+
+.splash-sub {
+  margin-top: 24px;
+  opacity: 0.85;
+  font-size: 18px;
+}
+
+/* ======================================================
+   LAUNCHER
+   ====================================================== */
+
+.launcher-title {
+  font-size: 48px;
+  font-weight: bold;
+  color: #f5c16c;
+  margin-bottom: 20px;
+}
+
+.launcher-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 10px;
+  min-width: 300px;
+}
+
+.launcher-buttons button {
+  font-size: 18px;
+  padding: 14px;
+}
+
+/* ======================================================
+   APP TITLE
+   ====================================================== */
+
+.app-title {
+  text-align: center;
+  font-size: 52px;
+  font-weight: bold;
+  color: #f5c16c;
+  margin-bottom: 10px;
+  letter-spacing: 3px;
+}
+
+.divider {
+  width: 60%;
+  height: 2px;
+  margin: 12px auto 20px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(245, 193, 108, 0.6),
+    transparent
+  );
+}
+
+/* ======================================================
+   COLLAPSIBLE SECTIONS
+   ====================================================== */
+
+.collapsible {
+  border: 1px solid #333;
+  background: #1a1a1a;
+  margin-bottom: 20px;
+}
+
+.collapsible h2 {
+  margin: 0;
+  padding: 14px 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #f5c16c;
+  font-size: 20px;
+}
+
+.collapsible .content {
+  display: none;
+  padding: 16px;
+}
+
+.collapsible.open .content {
+  display: block;
+}
+
+.chevron {
+  transition: transform 0.2s ease;
+}
+
+.collapsible.open .chevron {
+  transform: rotate(180deg);
+}
+
+/* ======================================================
+   FORM LAYOUT
+   ====================================================== */
+
+.row {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.row span {
+  font-weight: bold;
+}
+
+/* ======================================================
+   DYNAMIC ENTRIES
+   ====================================================== */
+
+.entry {
+  border: 1px dashed #444;
+  padding: 12px;
+  margin-bottom: 12px;
+  background: #181818;
+}
+
+.entry label {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.entry span {
+  font-weight: bold;
+}
+
+/* ======================================================
+   INPUTS
+   ====================================================== */
+
+input,
+textarea {
+  background: #222;
+  color: #eee;
+  border: 1px solid #444;
+  padding: 8px;
+  width: 100%;
+  font-size: 16px;
+}
+
+textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+/* ======================================================
+   BUTTONS
+   ====================================================== */
+
+button {
+  background: #333;
+  color: #eee;
+  border: 1px solid #555;
+  padding: 8px 14px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #555;
+}
+
+button[disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ======================================================
+   ANIMATIONS
+   ====================================================== */
+
+@keyframes glowIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    text-shadow:
+      0 0 6px rgba(245, 193, 108, 0.6),
+      0 0 14px rgba(245, 193, 108, 0.35);
+  }
+}
+
+/* ======================================================
+   PRINT STYLES
+   ====================================================== */
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+    margin: 0;
+  }
+
+  /* Hide non-app screens */
+  #splashScreen,
+  #launcherScreen {
+    display: none !important;
+  }
+
+  button,
+  .chevron {
+    display: none !important;
+  }
+
+  .collapsible {
+    border: none;
+    background: none;
+    margin-bottom: 12px;
+  }
+
+  .collapsible .content {
+    display: block !important;
+    padding: 0;
+  }
+
+  h2 {
+    color: #000;
+    border-bottom: 1px solid #000;
+    margin-top: 18px;
+  }
+
+  input,
+  textarea {
+    border: none;
+    background: transparent;
+    color: #000;
+    padding: 0;
+  }
+
+  .entry {
+    border: none;
+    padding: 0;
+  }
+}
